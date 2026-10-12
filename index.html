@@ -1,140 +1,269 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Online Purchase Abandonment</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shopping Solvers research project exploring online purchasing behavior and incomplete purchases.">
+  <title>Shopping Solvers | Purchase Intelligence</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="#home">SHOPPING <span>SOLVERS ↗</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#explorer">Data Explorer</a>
+        <a href="#research">Research</a>
+        <a href="#progress">Progress</a>
+        <a href="#team">Team</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="logo">Purchase Analytics</div>
-
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="analysis.html">Data & Analysis</a></li>
-            <li><a href="progress.html">Progress</a></li>
-            <li><a href="files.html">Project Files</a></li>
-            <li><a href="presentations.html">Presentations</a></li>
-            <li><a href="team.html">Team</a></li>
-        </ul>
-    </nav>
-
-
-    <!-- Hero Section -->
-    <header class="hero">
-
-        <p class="tag">IT 4793 • Fall 2026</p>
-
-        <h1>
-            Online Purchase <span>Abandonment</span>
-        </h1>
-
-        <h2>A Deeper Look Into Online Shopping</h2>
-
-        <p class="hero-description">
-            Exploring customer behavior and the factors that influence
-            whether online shoppers complete their purchases or leave
-            their carts behind.
+  <main>
+    <section class="hero container" id="home">
+      <div>
+        <span class="tag">IT 4793 · MILESTONE 2 · FALL 2026</span>
+        <h1>Understand the <span class="green">why</span> behind the abandoned cart.</h1>
+        <p>
+          Exploring online shopper behavior, purchasing decisions,
+          and how data can help businesses understand incomplete purchases.
         </p>
+        <div class="hero-actions">
+          <a class="btn" href="#dashboard">Explore Dashboard ↗</a>
+          <a class="btn outline" href="#research">Our Research →</a>
+        </div>
+        <p class="hero-credit">Shopping Solvers · Kennesaw State University</p>
+      </div>
 
-        <a href="about.html" class="main-button">
-            Explore Our Project
-        </a>
+      <div class="visual">
+        <span class="kicker">● PURCHASE INTELLIGENCE LAB</span>
+        <h3>Understanding the Customer Journey</h3>
+        <div class="journey">
+          <div><span>01</span><strong>Browse</strong><small>Discover</small></div>
+          <div><span>02</span><strong>Consider</strong><small>Explore</small></div>
+          <div><span>03</span><strong>Decide</strong><small>Purchase or leave</small></div>
+        </div>
+        <p class="note">Behavior → Data → Analysis → Insights</p>
+      </div>
+    </section>
 
-    </header>
+    <section class="section alt" id="dashboard">
+      <div class="container">
+        <span class="kicker">01 / INTERACTIVE ANALYTICS</span>
+        <h2>Shopper Behavior <span class="green">Dashboard.</span></h2>
+        <p class="subtitle">Explore purchasing patterns by visitor type and device.</p>
 
-
-    <!-- Project Overview -->
-    <section class="overview">
-
-        <p class="section-label">OUR RESEARCH</p>
-
-        <h2>Understanding Online Shopping Behavior</h2>
-
-        <p class="section-description">
-            Our project uses e-commerce customer behavior data to identify
-            patterns associated with purchase completion and abandonment.
-        </p>
-
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="card-icon">🛒</div>
-
-                <h3>Shopping Behavior</h3>
-
-                <p>
-                    Examine how customers interact with products,
-                    pages, and their shopping carts.
-                </p>
-            </div>
-
-
-            <div class="card">
-                <div class="card-icon">📊</div>
-
-                <h3>Data Analysis</h3>
-
-                <p>
-                    Analyze customer activity to identify patterns
-                    and trends related to purchasing decisions.
-                </p>
-            </div>
-
-
-            <div class="card">
-                <div class="card-icon">📈</div>
-
-                <h3>Predictive Analytics</h3>
-
-                <p>
-                    Explore whether customer behavior can help predict
-                    if a shopping session will result in a purchase.
-                </p>
-            </div>
-
+        <div class="notice">
+          DEMO DATA: These synthetic shopping sessions demonstrate how the
+          analytics dashboard works. They are not actual research findings.
         </div>
 
+        <div class="filters">
+          <label for="visitor">Visitor type</label>
+          <select id="visitor">
+            <option value="all">All visitors</option>
+            <option value="Returning">Returning</option>
+            <option value="New">New</option>
+          </select>
+
+          <label for="device">Device</label>
+          <select id="device">
+            <option value="all">All devices</option>
+            <option value="Desktop">Desktop</option>
+            <option value="Mobile">Mobile</option>
+          </select>
+
+          <button class="btn outline" id="resetFilters">Reset ↺</button>
+        </div>
+
+        <div class="stats">
+          <article class="card">
+            <p>Demo Sessions</p>
+            <strong id="sessions">0</strong>
+            <small>Filtered records</small>
+          </article>
+          <article class="card">
+            <p>Purchase Completion</p>
+            <strong id="completed">0%</strong>
+            <small>Completed sessions</small>
+          </article>
+          <article class="card">
+            <p>No Purchase</p>
+            <strong id="notcompleted">0%</strong>
+            <small>Sessions without purchase</small>
+          </article>
+          <article class="card">
+            <p>Avg. Product Pages</p>
+            <strong id="pages">0</strong>
+            <small>Per shopping session</small>
+          </article>
+        </div>
+
+        <div class="charts">
+          <article class="chart">
+            <h3>Purchase Outcome Distribution</h3>
+            <p class="note">Completed purchases versus sessions without purchases</p>
+            <div class="donut" id="donut">
+              <div><strong id="donutText">0%</strong><small>Purchased</small></div>
+            </div>
+            <p class="legend">
+              <span class="green">● Purchased</span>
+              <span class="blue">● No Purchase</span>
+            </p>
+          </article>
+
+          <article class="chart">
+            <h3>Average Product Pages Viewed</h3>
+            <p class="note">Comparison by purchase outcome</p>
+            <div class="bar-row">
+              <label>Purchased <span id="yesPages">0</span></label>
+              <div class="track"><div class="fill" id="yesBar"></div></div>
+            </div>
+            <div class="bar-row">
+              <label>No Purchase <span id="noPages">0</span></label>
+              <div class="track"><div class="fill blue-fill" id="noBar"></div></div>
+            </div>
+          </article>
+        </div>
+
+        <p class="note">
+          Research limitation: A session without a completed purchase
+          does not necessarily mean the customer abandoned a shopping cart.
+        </p>
+      </div>
     </section>
 
+    <section class="section" id="explorer">
+      <div class="container">
+        <span class="kicker">02 / SHOPPER DATA</span>
+        <h2>Session <span class="green">Explorer.</span></h2>
+        <p class="subtitle">
+          Search example shopping sessions, compare behaviors,
+          and export filtered results.
+        </p>
 
-    <!-- Research Question -->
-    <section class="research-question">
+        <div class="toolbar">
+          <input id="search" type="search" placeholder="Search sessions..." aria-label="Search sessions">
+          <button class="btn" id="exportCSV">Export CSV ↓</button>
+        </div>
 
-        <p class="section-label">MAIN RESEARCH QUESTION</p>
-
-        <h2>
-            What factors influence whether an online shopper
-            completes or abandons a purchase?
-        </h2>
-
+        <div class="tablebox">
+          <table>
+            <thead>
+              <tr>
+                <th>Session</th>
+                <th>Visitor</th>
+                <th>Device</th>
+                <th>Month</th>
+                <th>Product Pages</th>
+                <th>Outcome</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+        <p id="rowCount" class="note" aria-live="polite"></p>
+        <p class="note">
+          All demonstration records are synthetic and will be replaced
+          when a validated project dataset is ready.
+        </p>
+      </div>
     </section>
 
-
-    <!-- Footer -->
-    <footer>
-
-        <h3>Online Purchase Abandonment</h3>
-
-        <p>
-            IT 4793 — Applied Data Driven Solutions
+    <section class="section alt" id="research">
+      <div class="container">
+        <span class="kicker">03 / RESEARCH METHODOLOGY</span>
+        <h2>Turning Behavior Into <span class="green">Insights.</span></h2>
+        <p class="subtitle">
+          Our research question: What factors influence whether an
+          online shopper completes or abandons a purchase?
         </p>
 
-        <p>
-            College of Computing and Software Engineering
-            • Kennesaw State University • Fall 2026
-        </p>
+        <div class="grid3">
+          <article class="research-card">
+            <span>01 / COLLECT</span>
+            <h3>Customer Data</h3>
+            <p>Gather publicly available online shopping session data to examine customer activity and purchasing outcomes.</p>
+          </article>
+          <article class="research-card">
+            <span>02 / ANALYZE</span>
+            <h3>Behavior Patterns</h3>
+            <p>Compare visitor types, product-related activity, shopping sessions, and revenue outcomes through descriptive analysis.</p>
+          </article>
+          <article class="research-card">
+            <span>03 / PRESENT</span>
+            <h3>Data Visualization</h3>
+            <p>Use interactive charts and tables to communicate patterns and explore predictive classification if supported by the dataset.</p>
+          </article>
+        </div>
 
-    </footer>
+        <div class="source">
+          <span class="kicker">PLANNED DATA SOURCE</span>
+          <h3>UCI Online Shoppers Purchasing Intention Dataset</h3>
+          <p class="note">
+            This dataset includes shopping session attributes and a Revenue outcome.
+            It does not directly identify abandoned shopping carts.
+          </p>
+          <a class="btn outline" target="_blank" rel="noopener noreferrer"
+             href="https://archive.ics.uci.edu/dataset/468/online+shoppers+purchasing+intention+dataset">
+            Explore Dataset ↗
+          </a>
+        </div>
+      </div>
+    </section>
 
+    <section class="section" id="progress">
+      <div class="container">
+        <span class="kicker">04 / PROJECT DEVELOPMENT</span>
+        <h2>Project <span class="green">Roadmap.</span></h2>
+        <div class="timeline">
+          <article>
+            <small>SEPTEMBER 25, 2026</small>
+            <h3>✓ Milestone 1 — Foundation</h3>
+            <p>Establish project goals, team responsibilities, research direction, and the initial website.</p>
+          </article>
+          <article>
+            <small>OCTOBER 20, 2026</small>
+            <h3>Milestone 2 — Development</h3>
+            <p>Expand the website, prototype interactive data features, gather shopper information, and begin analysis.</p>
+          </article>
+          <article>
+            <small>NOVEMBER 10, 2026</small>
+            <h3>Milestone 3 — Final Presentation</h3>
+            <p>Complete the research, integrate technical results, and prepare project materials for presentation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <section class="section alt" id="team">
+      <div class="container">
+        <span class="kicker">05 / OUR TEAM</span>
+        <h2>Meet Shopping <span class="green">Solvers.</span></h2>
+        <p class="subtitle">IT 4793 — Applied Data-Driven Solutions, Kennesaw State University.</p>
+        <div class="team">
+          <article class="member"><div class="avatar">IJ</div><h3>Isaiah Jackson</h3><p>Team Leader & Project Coordination</p></article>
+          <article class="member"><div class="avatar">JP</div><h3>Jarred Pollock</h3><p>Website Creation & Upkeep</p></article>
+          <article class="member"><div class="avatar">TC</div><h3>Tomario Carter</h3><p>Website Development & Design</p></article>
+          <article class="member"><div class="avatar">DM</div><h3>Daijah McDonald</h3><p>Writing & Technical Support</p></article>
+          <article class="member"><div class="avatar">ST</div><h3>Sydney Tompkins</h3><p>Research, Communication & Programming</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>SHOPPING SOLVERS</strong>
+      <p>IT 4793 · Kennesaw State University · Fall 2026</p>
+      <a href="https://github.com/OnlyMario/online_purchase_abandonment"
+         target="_blank" rel="noopener noreferrer">GitHub Repository ↗</a>
+    </div>
+  </footer>
 </body>
 </html>
