@@ -417,3 +417,23 @@ footer a:hover { color: var(--green); }
   .team { grid-template-columns: 1fr; }
   .toolbar input { min-width: 0; width: 100%; }
 }
+
+.session-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.session-filters label {
+  font-weight: 600;
+}
+
+.session-filters select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: white;
+  color: #222;
+}
